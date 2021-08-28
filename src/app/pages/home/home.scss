@@ -1,0 +1,17 @@
+@import "@app/colors";
+@import "@app/mixins";
+
+.app-home {
+	&__title {
+		text-align: center;
+	}
+
+	&__json-data-container {
+		background-color: $black;
+		color: $white;
+
+		@include breakpoint("xsmall") {
+			color: $neon-green;
+		}
+	}
+}
