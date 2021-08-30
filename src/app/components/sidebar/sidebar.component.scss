@@ -1,0 +1,30 @@
+aside {
+  padding: 3rem;
+
+  li {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+    &:nth-last-child(1){
+      border-top: none;
+    }
+    
+    &:hover {
+      padding-left: 1.2rem;
+    }
+    
+    a {
+      color: #007bff;
+      font-size: 1.1rem;
+
+      &:hover, &:active, &:link, &:visited {
+        color: #007bff;
+        text-decoration: none;
+      }
+    }
+  }
+
+}

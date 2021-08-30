@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
 
-import { GameMockClient, Game } from "../../shared";
+import { GameMockClient, IGame } from "../../shared";
 
 const NAME_KEBAB = "app-home";
 
@@ -9,15 +9,24 @@ const NAME_KEBAB = "app-home";
 	templateUrl: "./home.component.html",
 	styleUrls: ["./home.scss"],
 	host: { class: NAME_KEBAB },
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
-
-	gamesData$: Observable<Game[]>;
+export class HomeComponent implements OnInit, OnDestroy {
+	sub: Subscription = new Subscription();
+	games: IGame[] = [];
 
 	constructor(
-		gameMockClient: GameMockClient
+		private gameMockClient: GameMockClient
 	) {
-		this.gamesData$ = gameMockClient.getAll$();
+		
+	}
+
+	ngOnInit(): void {
+		this.sub = this.gameMockClient.getAll$().subscribe((games: IGame[]) => {
+			this.games = games;
+		});
+	}
+
+	ngOnDestroy() {
+		this.sub.unsubscribe();
 	}
 }

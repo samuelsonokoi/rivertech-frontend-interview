@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Game } from "./game.model";
+import { IGame } from 'src/app/models/game.model';
 
 @Injectable({
 	providedIn: "root"
@@ -15,7 +15,7 @@ export class GameMockClient {
 	) {
 	}
 
-	getAll$(): Observable<Game[]> {
-		return this.http.get<Game[]>(this.dataURL);
+	getAll$(): Observable<IGame[]> {
+		return this.http.get<IGame[]>(this.dataURL);
 	}
 }
