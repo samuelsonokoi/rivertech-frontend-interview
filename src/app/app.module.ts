@@ -18,7 +18,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 		HttpClientModule,
 		RouterModule,
 		BrowserModule,
-		AppPagesModule
+		AppPagesModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

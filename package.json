@@ -23,6 +23,8 @@
     "@ngxs/logger-plugin": "^3.7.0",
     "@ngxs/storage-plugin": "^3.7.0",
     "@ngxs/store": "^3.7.0",
+    "ngx-pagination": "^5.1.1",
+    "ngx-spinner": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

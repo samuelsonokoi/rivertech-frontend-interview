@@ -9,3 +9,20 @@
 main, aside {
   padding: 3rem;
 }
+
+.tag {
+  position: absolute;
+  padding: 0.8rem;
+  top: 0;
+  right: 0;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #007bffbd;
+  font-weight: bold;
+}
+
+.big-image {
+  height: 19.6rem;
+}
+
+a:hover { text-decoration: none; }

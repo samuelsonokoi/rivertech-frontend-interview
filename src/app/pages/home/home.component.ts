@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.sub = this.gameMockClient.getAll$().subscribe((games: IGame[]) => {
-			this.games = games;
+			this.games = games.filter(game => game.tag === 'trending');
 		});
 	}
 

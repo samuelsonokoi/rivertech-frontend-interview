@@ -1,0 +1,15 @@
+<div class="row justify-content-center" *ngIf="game; else loader">
+  <div class="col-md-12">
+    <a [routerLink]="[ '/games']" class="btn btn-primary mb-5">&lt; Back To Games</a>
+  </div>
+  <div class="col-md-5">
+    <app-game-card [link]="true" [game]="game"></app-game-card>
+  </div>
+</div>
+
+
+<ng-template #loader>
+  <div class="loader text-center">
+    Loading...
+  </div>
+</ng-template>

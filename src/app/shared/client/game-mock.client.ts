@@ -18,4 +18,5 @@ export class GameMockClient {
 	getAll$(): Observable<IGame[]> {
 		return this.http.get<IGame[]>(this.dataURL);
 	}
+
 }
