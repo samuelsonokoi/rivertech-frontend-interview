@@ -11,6 +11,7 @@ export class GamesComponent implements OnInit {
   sub: Subscription = new Subscription();
   games: IGame[] = [];
   p = 1;
+  gameFilter: any = { slug: '' };
 
 	constructor(
 		private gameMockClient: GameMockClient
