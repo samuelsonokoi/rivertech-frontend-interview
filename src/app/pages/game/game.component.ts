@@ -25,7 +25,21 @@ export class GameComponent implements OnInit {
 
     this.gameMockClient.getAll$().subscribe(games => {
       this.game = games.filter(g => g.slug === this.id)[0];
+      this.addToLastPlayed()
     });
+
+  }
+
+  addToLastPlayed = () => {
+    let lastPlayed: IGame[] = this.gameMockClient.getLastPlayedGames();
+    
+    // check if the game id exist in last played
+    let exists = lastPlayed.some((game: any) => game.slug.includes(this.id));
+
+    if (!exists) {
+      lastPlayed.push(this.game);
+      window.localStorage.setItem('casinoLastPlayed', JSON.stringify(lastPlayed));
+    }
   }
 
 }

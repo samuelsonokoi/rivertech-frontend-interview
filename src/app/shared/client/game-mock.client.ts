@@ -19,4 +19,11 @@ export class GameMockClient {
 		return this.http.get<IGame[]>(this.dataURL);
 	}
 
+	getLastPlayedGames = (): IGame[] => {
+		// get last played games
+    let lastPlayedgames: any = window.localStorage.getItem('casinoLastPlayed');
+		let lastPlayed: IGame[] = lastPlayedgames ? JSON.parse(lastPlayedgames) : [];
+		return lastPlayed.length > 5 ? lastPlayed.slice(Math.max(lastPlayed.length - 5, 0)) : lastPlayed;
+	}
+
 }

@@ -10,12 +10,14 @@ import { GamesComponent } from './games/games.component';
 import { GameCardComponent } from '../components/game-card/game-card.component';
 import { GameComponent } from './game/game.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { LastPlayedComponent } from '../components/last-played/last-played.component';
 
 const COMPONENTS = [
 	HomeComponent,
 	GamesComponent,
 	GameCardComponent,
-	GameComponent
+	GameComponent,
+	LastPlayedComponent
 ];
 
 @NgModule({
