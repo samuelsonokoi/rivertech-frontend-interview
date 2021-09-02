@@ -2,8 +2,7 @@
   <span class="tag" *ngIf="game?.tag">{{game?.tag}}</span>
   <a [routerLink]="[ '/game', game?.slug]" (click)="selectGame()">
     <img class="card-img-top" [src]="game?.thumb?.url ? game?.thumb?.url : './assets/images/play-now.png'"
-      [alt]="game?.thumb?.title" [ngClass]="{'big-image': !game?.thumb?.url}"
-      [ngClass]="{'medium-image': lastPlayed}" />
+      [alt]="game?.thumb?.title" [ngClass]="{'big-image': !game?.thumb?.url, 'medium-image': lastPlayed}" />
   </a>
   <div class="card-body">
     <a [routerLink]="[ '/game', game?.slug ] " (click)="selectGame()">
