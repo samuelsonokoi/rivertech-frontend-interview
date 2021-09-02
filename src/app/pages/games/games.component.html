@@ -4,7 +4,23 @@
 
 <div class="row justify-content-center">
   <div class="col-md-6">
-    <input type="search" [(ngModel)]="gameFilter.slug" placeholder="Search here" class="form-control" />
+    <input type="search" [(ngModel)]="search" placeholder="Search here" class="form-control form-control-sm"
+      (input)="searchForGame()" />
+  </div>
+  <div class="col-mg-2">
+    <div class="dropdown">
+      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <span class="provider-item" [ngClass]="{'active': isExists(selectedProviders, item)}"
+          *ngFor="let item of providers" (click)="modifyProviders(item)">{{item}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button (click)="clearFilter()" class="btn btn-primary btn-sm">Clear Filter</button>
   </div>
 </div>
 

@@ -1,0 +1,10 @@
+.provider-item {
+  display: block;
+  padding: 0.5rem;
+  cursor: pointer;
+  
+  &.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+}

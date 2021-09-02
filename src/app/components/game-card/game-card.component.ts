@@ -14,10 +14,6 @@ export class GameCardComponent implements OnInit {
 
   constructor(private store: Store) { }
 
-  ngOnInit(): void { }
-  
-  setSelectedGame = () => {
-    this.store.dispatch(new GetGame(this.game.slug));
-  }
+  ngOnInit(): void {}
 
 }

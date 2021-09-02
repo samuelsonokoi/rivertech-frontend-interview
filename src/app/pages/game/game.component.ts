@@ -14,7 +14,7 @@ export class GameComponent implements OnInit {
   game!: IGame;
   sub: Subscription = new Subscription();
   id: any;
-  game$: Observable<IGame> = new Observable();
+  games$: Observable<IGame[]> = new Observable();
 
   constructor(
     private route: ActivatedRoute,
@@ -27,21 +27,20 @@ export class GameComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.spinner.show();
 
-    this.game$ = this.store.select(state => state.GameState.selectedGame);
-		this.sub = this.game$.subscribe((game: IGame) => {
-      this.game = game;
+    this.games$ = this.store.select(state => state.GameState.allGames);
+		this.sub = this.games$.subscribe((games: IGame[]) => {
+      this.game = games.filter(g => g.slug === this.id)[0];
       this.spinner.hide();
-
-      // add game to last played
-      this.addToLastPlayed()
+      this.addToLastPlayed();
 		});
+
   }
 
   addToLastPlayed = () => {
     let lastPlayed: IGame[] = this.gameMockClient.getLastPlayedGames();
     
     // check if the game id exist in last played
-    let exists = lastPlayed.some((game: any) => game.slug.includes(this.id));
+    let exists = lastPlayed.some((game: any) => game.slug.includes(this.game.id));
 
     if (!exists) {
       lastPlayed.push(this.game);

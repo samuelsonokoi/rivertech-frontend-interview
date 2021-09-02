@@ -61,9 +61,12 @@ export class GamesState {
   @Action(GetGame)
   getGame(ctx: StateContext<GameStateModel>, action: GetGame) {
     const state = ctx.getState();
-    return ctx.setState({
+    ctx.setState({
       ...state,
-      selectedGame: ctx.getState().allGames.filter(game => game.tag === 'trending')[0]
+      selectedGame: [
+        ...state.selectedGame,
+        ctx.getState().allGames.filter(game => game.tag === action.payload)[0]
+      ]
     });
   }
 
