@@ -3,7 +3,7 @@
     <h2 class="mt-5 text-primary text-center">Last Played</h2>
   </div>
   <div class="col-md-2 col-lg-2 col-xl-2 col-sm-6 col-xs-12" *ngFor="let item of lastPlayedGames">
-    <app-game-card [game]="item" [link]="false"></app-game-card>
+    <app-game-card [game]="item" [link]="false" [lastPlayed]="true"></app-game-card>
   </div>
 
   <div class="col-xs-12" *ngIf="lastPlayedGames.length === 0">

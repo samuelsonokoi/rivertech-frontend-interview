@@ -11,9 +11,14 @@ import { GetGame } from 'src/app/redux/game.action';
 export class GameCardComponent implements OnInit {
   @Input() game!: IGame;
   @Input() link = true;
+  @Input() lastPlayed = false;
 
   constructor(private store: Store) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  
+  selectGame = () => {
+    this.store.dispatch(new GetGame(this.game.slug));
+  }
 
 }

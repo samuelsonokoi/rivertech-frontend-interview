@@ -21,8 +21,10 @@ export class GameComponent implements OnInit {
     private gameMockClient: GameMockClient,
     private spinner: NgxSpinnerService,
     private store: Store,
-  ) { }
-
+  ) {
+    
+  }
+  
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.spinner.show();
@@ -40,7 +42,7 @@ export class GameComponent implements OnInit {
     let lastPlayed: IGame[] = this.gameMockClient.getLastPlayedGames();
     
     // check if the game id exist in last played
-    let exists = lastPlayed.some((game: any) => game.slug.includes(this.game.id));
+    let exists = lastPlayed.some((game: IGame) => game.slug.includes(this.id));
 
     if (!exists) {
       lastPlayed.push(this.game);
