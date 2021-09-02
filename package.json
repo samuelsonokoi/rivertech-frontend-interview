@@ -23,7 +23,6 @@
     "@ngxs/logger-plugin": "^3.7.0",
     "@ngxs/storage-plugin": "^3.7.0",
     "@ngxs/store": "^3.7.0",
-    "ngx-filter-pipe": "^2.1.2",
     "ngx-pagination": "^5.1.1",
     "ngx-spinner": "^11.0.2",
     "rxjs": "~6.6.0",

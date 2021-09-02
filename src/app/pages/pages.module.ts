@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { AppPagesRoutingModule } from "./pages-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FilterPipeModule } from 'ngx-filter-pipe';
 import { HomeComponent } from "./home/home.component";
 import { GamesComponent } from './games/games.component';
 import { GameCardComponent } from '../components/game-card/game-card.component';
@@ -26,7 +25,6 @@ const COMPONENTS = [
 		AppPagesRoutingModule,
 		NgxPaginationModule,
 		NgxSpinnerModule,
-		FilterPipeModule,
 		FormsModule,
 		BrowserAnimationsModule
 	],

@@ -20,7 +20,6 @@ export class GamesComponent implements OnInit {
   games: IGame[] = [];
   filteredGames: IGame[] = [];
   p = 1;
-  gameFilter: any = { slug: '' };
   search: string = '';
   providers: string[] = [];
   selectedProviders: string[] = [];
