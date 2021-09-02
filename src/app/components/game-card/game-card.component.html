@@ -1,14 +1,15 @@
 <div class="card text-center mt-4">
   <span class="tag" *ngIf="game?.tag">{{game?.tag}}</span>
-  <a [routerLink]="[ '/game', game?.slug]">
+  <a [routerLink]="[ '/game', game?.slug]" (click)="setSelectedGame()">
     <img class="card-img-top" [src]="game?.thumb?.url ? game?.thumb?.url : './assets/images/play-now.png'"
       [alt]="game?.thumb?.title" [ngClass]="{'big-image': !game?.thumb?.url}" />
   </a>
   <div class="card-body">
-    <a [routerLink]="[ '/game', game?.slug ]">
+    <a [routerLink]="[ '/game', game?.slug ]" (click)="setSelectedGame()">
       <h5 class="card-title text-primary">{{game?.title}}</h5>
     </a>
-    <a [href]="game?.startUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary" *ngIf="link">Play For
+    <a [href]="game?.startUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary" *ngIf="link"
+      (click)="setSelectedGame()">Play For
       Fun</a>
   </div>
 </div>

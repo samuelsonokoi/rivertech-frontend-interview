@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from '@ngxs/store';
-import { GetAllGames } from './redux/game.action';
+import { GetAllGames, GetTrendingGames } from './redux/game.action';
 
 @Component({
 	selector: "app-root",
@@ -11,5 +11,6 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.store.dispatch(new GetAllGames());
+		this.store.dispatch(new GetTrendingGames());
 	}
 }

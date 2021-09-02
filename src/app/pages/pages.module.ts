@@ -1,9 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { AppPagesRoutingModule } from "./pages-routing.module";
-import { NgxsModule } from '@ngxs/store';
-import { environment } from 'src/environments/environment';
-import { GamesState } from '../redux/games.state';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { HomeComponent } from "./home/home.component";
@@ -30,9 +28,7 @@ const COMPONENTS = [
 		NgxSpinnerModule,
 		FilterPipeModule,
 		FormsModule,
-		NgxsModule.forRoot([GamesState], {
-      developmentMode: !environment.production
-    })
+		BrowserAnimationsModule
 	],
 	declarations: [
 		...COMPONENTS,

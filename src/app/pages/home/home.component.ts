@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from "@angular/core";
+import { Store } from '@ngxs/store';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, Subscription } from "rxjs";
+import { GameSelectors } from 'src/app/redux/game.selectors';
 
 import { GameMockClient, IGame } from "../../shared";
 
@@ -12,17 +15,20 @@ const NAME_KEBAB = "app-home";
 })
 export class HomeComponent implements OnInit, OnDestroy {
 	sub: Subscription = new Subscription();
-	games: IGame[] = [];
+	trendingGames$: Observable<IGame[]> = new Observable();
+	trendingGames: IGame[] = [];
 
 	constructor(
-		private gameMockClient: GameMockClient
-	) {
-		
-	}
+    private store: Store,
+    private spinner: NgxSpinnerService
+    ) { }
 
-	ngOnInit(): void {
-		this.sub = this.gameMockClient.getAll$().subscribe((games: IGame[]) => {
-			this.games = games.filter(game => game.tag === 'trending');
+  ngOnInit(): void {
+    this.spinner.show();
+    this.trendingGames$ = this.store.select(state => state.GameState.trendingGames);
+		this.sub = this.trendingGames$.subscribe((games: IGame[]) => {
+      this.trendingGames = games;
+      this.spinner.hide()
 		});
 	}
 

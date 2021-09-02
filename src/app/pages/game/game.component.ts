@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { GameMockClient, IGame } from 'src/app/shared';
 
 @Component({
@@ -13,21 +14,27 @@ export class GameComponent implements OnInit {
   game!: IGame;
   sub: Subscription = new Subscription();
   id: any;
+  game$: Observable<IGame> = new Observable();
 
   constructor(
     private route: ActivatedRoute,
     private gameMockClient: GameMockClient,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private store: Store,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.spinner.show();
 
-    this.gameMockClient.getAll$().subscribe(games => {
-      this.game = games.filter(g => g.slug === this.id)[0];
+    this.game$ = this.store.select(state => state.GameState.selectedGame);
+		this.sub = this.game$.subscribe((game: IGame) => {
+      this.game = game;
+      this.spinner.hide();
+
+      // add game to last played
       this.addToLastPlayed()
-    });
-
+		});
   }
 
   addToLastPlayed = () => {
