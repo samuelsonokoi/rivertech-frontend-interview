@@ -2,9 +2,8 @@ import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from "@angular/
 import { Store } from '@ngxs/store';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, Subscription } from "rxjs";
-import { GameSelectors } from 'src/app/redux/game.selectors';
 
-import { GameMockClient, IGame } from "../../shared";
+import { IGame } from "../../shared";
 
 const NAME_KEBAB = "app-home";
 

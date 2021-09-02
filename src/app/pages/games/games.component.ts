@@ -5,9 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, Subscription } from 'rxjs';
 import { timeout } from 'rxjs/operators';
 import { GetGame } from 'src/app/redux/game.action';
-import { GameSelectors } from 'src/app/redux/game.selectors';
-import { GamesState } from 'src/app/redux/games.state';
-import { IGame, GameMockClient } from 'src/app/shared';
+import { IGame } from 'src/app/shared';
 
 @Component({
   selector: 'app-games',
